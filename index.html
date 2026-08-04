@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Premium de Interfaces</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <h1>Catálogo de <span>Frontends</span></h1>
+            <p>Descubra interfaces comerciais de alta performance, animadas e focadas em conversão.</p>
+        </div>
+    </header>
+
+    <main class="grid-container">
+        <!-- Espeto Menu -->
+        <a href="EspetoMenu/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                <span class="tag">App Completo</span>
+            </div>
+            <div class="card-content">
+                <h2>Espeto Menu</h2>
+                <p>Cardápio digital completo com foco em usabilidade para restaurantes.</p>
+            </div>
+        </a>
+
+        <!-- VPS Dashboard -->
+        <a href="VpsDashboard/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
+                <span class="tag">Dashboard Analytics</span>
+            </div>
+            <div class="card-content">
+                <h2>Dashboard Analítico</h2>
+                <p>Painel administrativo complexo para gestão e filtragem de grandes volumes de dados.</p>
+            </div>
+        </a>
+
+        <!-- Pricing Modern -->
+        <a href="Catalogo_3_Pricing_Modern/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #0f172a 0%, #38bdf8 100%);">
+                <span class="tag">Pricing</span>
+            </div>
+            <div class="card-content">
+                <h2>Pricing Moderno</h2>
+                <p>Tabela de preços Dark Mode com Glassmorphism para planos SaaS.</p>
+            </div>
+        </a>
+
+        <!-- Menu Animado -->
+        <a href="Catalogo_4_Menu_Animado/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
+                <span class="tag">Cardápio</span>
+            </div>
+            <div class="card-content">
+                <h2>Menu Animado</h2>
+                <p>Cardápio interativo e animado, ideal para hamburguerias e delivery premium.</p>
+            </div>
+        </a>
+
+        <!-- Landing Page -->
+        <a href="Catalogo_5_Landing_Page/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                <span class="tag">Conversão</span>
+            </div>
+            <div class="card-content">
+                <h2>Landing Page</h2>
+                <p>Página única otimizada para capturar leads e promover um produto exclusivo.</p>
+            </div>
+        </a>
+
+        <!-- Portfolio -->
+        <a href="Catalogo_6_Portfolio/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #1a1a1a 0%, #ff4b4b 100%);">
+                <span class="tag">Agência</span>
+            </div>
+            <div class="card-content">
+                <h2>Portfólio Criativo</h2>
+                <p>Grid moderna e escura projetada para agências de design e serviços criativos.</p>
+            </div>
+        </a>
+
+        <!-- ECommerce Grid -->
+        <a href="Catalogo_7_ECommerce_Grid/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
+                <span class="tag">E-commerce</span>
+            </div>
+            <div class="card-content">
+                <h2>E-Commerce Grid</h2>
+                <p>Vitrine elegante e minimalista focada na demonstração e venda de produtos.</p>
+            </div>
+        </a>
+
+        <!-- Dashboard Admin -->
+        <a href="Catalogo_8_Dashboard_Admin/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+                <span class="tag">SaaS Admin</span>
+            </div>
+            <div class="card-content">
+                <h2>Painel Administrativo</h2>
+                <p>Dashboard focado em relatórios e gestão de vendas para plataformas.</p>
+            </div>
+        </a>
+
+        <!-- Pricing Comparison -->
+        <a href="Catalogo_9_Pricing_Comparison/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <span class="tag">Tabela B2B</span>
+            </div>
+            <div class="card-content">
+                <h2>Comparador de Preços</h2>
+                <p>Tabela detalhada de comparação de recursos, indispensável para produtos B2B.</p>
+            </div>
+        </a>
+
+        <!-- CoffeeShop Menu -->
+        <a href="Catalogo_10_CoffeeShop_Menu/index.html" class="card" target="_blank">
+            <div class="card-image" style="background: linear-gradient(135deg, #d4b499 0%, #8b5e34 100%);">
+                <span class="tag">Clássico</span>
+            </div>
+            <div class="card-content">
+                <h2>Menu Cafeteria</h2>
+                <p>Elegância clássica com tipografia refinada para cafeterias artesanais.</p>
+            </div>
+        </a>
+    </main>
+
+    <script>
+        // Micro-animação para revelar os cards ao rolar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

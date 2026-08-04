@@ -1,0 +1,19 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background: #0f172a; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.container { text-align: center; padding: 40px; }
+h1 { font-size: 2.5rem; margin-bottom: 10px; background: -webkit-linear-gradient(#38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+p { color: #94a3b8; margin-bottom: 50px; }
+.pricing-cards { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+.card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); width: 300px; transition: transform 0.3s; position: relative; }
+.card:hover { transform: translateY(-10px); border-color: #38bdf8; }
+.card h2 { font-size: 1.5rem; margin-bottom: 20px; }
+.price { font-size: 3rem; font-weight: 700; margin-bottom: 30px; }
+.price span { font-size: 1rem; color: #94a3b8; }
+ul { list-style: none; text-align: left; margin-bottom: 30px; }
+li { margin-bottom: 15px; color: #cbd5e1; }
+li::before { content: '✓'; color: #38bdf8; margin-right: 10px; }
+button { width: 100%; padding: 15px; border-radius: 10px; border: none; background: #38bdf8; color: #0f172a; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+button:hover { background: #7dd3fc; }
+.card.popular { background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; transform: scale(1.05); }
+.card.popular:hover { transform: scale(1.05) translateY(-10px); }
+.badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #38bdf8; color: #0f172a; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }

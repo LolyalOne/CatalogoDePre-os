@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Comparação</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 50px; background: #fff; color: #333; }
+        h1 { text-align: center; margin-bottom: 50px; }
+        table { width: 100%; border-collapse: collapse; max-width: 1000px; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        th, td { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; font-weight: bold; }
+        th:first-child, td:first-child { text-align: left; font-weight: bold; }
+        tr:hover { background: #fdfdfd; }
+        .check { color: #2ecc71; font-weight: bold; }
+        .cross { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Compare nossos Planos</h1>
+    <table>
+        <tr><th>Recursos</th><th>Free</th><th>Pro</th><th>Premium</th></tr>
+        <tr><td>Limite de Produtos</td><td>50</td><td>500</td><td>Ilimitado</td></tr>
+        <tr><td>Suporte</td><td>Email</td><td>Chat</td><td>24/7 Telefone</td></tr>
+        <tr><td>Domínio Personalizado</td><td class="cross">X</td><td class="check">V</td><td class="check">V</td></tr>
+        <tr><td>Analytics Avançado</td><td class="cross">X</td><td class="cross">X</td><td class="check">V</td></tr>
+    </table>
+</body>
+</html>

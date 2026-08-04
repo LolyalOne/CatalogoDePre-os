@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Virtual</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; background: #f9f9f9; }
+        .navbar { background: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+        .navbar h2 { margin: 0; color: #333; }
+        .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px; }
+        .product { background: #fff; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #eee; transition: box-shadow 0.2s; }
+        .product:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .img { height: 150px; background: #eee; margin-bottom: 15px; border-radius: 4px; }
+        .price { font-weight: bold; color: #27ae60; margin: 10px 0; }
+        button { background: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="navbar"><h2>Minha Loja</h2><div>Carrinho (0)</div></div>
+    <div class="products">
+        <div class="product"><div class="img"></div><h3>Produto A</h3><div class="price">R$ 199,90</div><button>Comprar</button></div>
+        <div class="product"><div class="img"></div><h3>Produto B</h3><div class="price">R$ 89,90</div><button>Comprar</button></div>
+        <div class="product"><div class="img"></div><h3>Produto C</h3><div class="price">R$ 249,90</div><button>Comprar</button></div>
+        <div class="product"><div class="img"></div><h3>Produto D</h3><div class="price">R$ 14,90</div><button>Comprar</button></div>
+    </div>
+</body>
+</html>
