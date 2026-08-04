@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="background-effects">
-        <video class="bg-video" autoplay loop muted playsinline>
+        <video class="bg-video" id="bgVideo" muted playsinline preload="auto">
             <source src="background.mp4" type="video/mp4">
         </video>
         <div class="bg-overlay"></div>
@@ -146,6 +146,27 @@
 
         document.querySelectorAll('.card').forEach(card => {
             observer.observe(card);
+        });
+
+        // Controle do vídeo baseado no scroll
+        const bgVideo = document.getElementById('bgVideo');
+        
+        // Garante que o vídeo pause caso o navegador tente tocar
+        bgVideo.pause();
+
+        window.addEventListener('scroll', () => {
+            if (bgVideo.duration) {
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPosition = window.scrollY;
+                
+                // Calcula a porcentagem do scroll (0 a 1)
+                const scrollPercentage = scrollPosition / maxScroll;
+                
+                // Anima suavemente o tempo do vídeo (usando requestAnimationFrame para performance)
+                requestAnimationFrame(() => {
+                    bgVideo.currentTime = bgVideo.duration * scrollPercentage;
+                });
+            }
         });
     </script>
 </body>
