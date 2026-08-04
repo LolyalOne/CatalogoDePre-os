@@ -14,14 +14,14 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* Efeitos de fundo (blur e orbs) */
+/* Efeitos de fundo com Video */
 .background-effects {
     position: fixed;
     top: 0;
@@ -31,36 +31,30 @@ body {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+    background: #050505;
 }
 
-.glow-orb {
+.bg-video {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.4;
-    animation: float 20s infinite alternate ease-in-out;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: blur(40px) brightness(0.6) saturate(1.2);
+    opacity: 0.8;
 }
 
-.orb-1 {
-    width: 600px;
-    height: 600px;
-    background: #6366f1;
-    top: -200px;
-    left: -100px;
-}
-
-.orb-2 {
-    width: 500px;
-    height: 500px;
-    background: #ec4899;
-    bottom: -100px;
-    right: -100px;
-    animation-delay: -10s;
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(50px, 100px) scale(1.1); }
+/* Overlay para dar um toque mais dark/glass */
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, #050505 100%);
 }
 
 header {
