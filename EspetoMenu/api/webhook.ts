@@ -4,7 +4,7 @@ import { getFirestore, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { jsPDF } from 'jspdf';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA-q8LKOGlbbRo9blAiOqN69C10ou7swTU',
+  apiKey: 'YOUR_API_KEY_HERE',
   authDomain: 'espeto-f-cil-menu.firebaseapp.com',
   databaseURL: 'https://espeto-f-cil-menu-default-rtdb.firebaseio.com',
   projectId: 'espeto-f-cil-menu',

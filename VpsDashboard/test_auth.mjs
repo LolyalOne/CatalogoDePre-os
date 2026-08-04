@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASu592dstF0I3iGSm0B-OVa70WPVU-5sM",
+  apiKey: "YOUR_API_KEY_HERE",
   authDomain: "vps-italia-legacy-db.firebaseapp.com",
   projectId: "vps-italia-legacy-db",
   storageBucket: "vps-italia-legacy-db.firebasestorage.app",
