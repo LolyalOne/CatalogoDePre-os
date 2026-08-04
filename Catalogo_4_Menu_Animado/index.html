@@ -5,46 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio Digital Animado</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Sabores Premium</h1>
-        <p>Explore nosso menu interativo</p>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">Sabores<span>Premium</span></div>
+        <div class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="badge">0</span></div>
+    </nav>
+
+    <header class="hero-header">
+        <h1>Descubra o Sabor <br>da Perfeição</h1>
+        <p>Explore nosso menu interativo e deixe-se levar por uma experiência gastronômica inesquecível.</p>
+        <div class="category-filters">
+            <button class="active">Todos</button>
+            <button>Lanches</button>
+            <button>Pizzas</button>
+            <button>Saudável</button>
+            <button>Sobremesas</button>
+        </div>
     </header>
+
     <main class="menu-grid">
-        <div class="menu-item">
-            <div class="img-placeholder" style="background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);"></div>
+        <article class="menu-item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Hambúrguer Artesanal">
+                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+            </div>
             <div class="content">
+                <div class="rating"><i class="fas fa-star"></i> 4.9 (120)</div>
                 <h3>Hambúrguer Artesanal</h3>
-                <p>Blend de carnes nobres, queijo cheddar, bacon crocante.</p>
-                <div class="price">R$ 35,90</div>
+                <p>Blend de carnes nobres, queijo cheddar, bacon crocante em pão brioche amanteigado.</p>
+                <div class="price-action">
+                    <div class="price">R$ 35,90</div>
+                </div>
             </div>
-        </div>
-        <div class="menu-item">
-            <div class="img-placeholder" style="background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);"></div>
+        </article>
+
+        <article class="menu-item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Margherita">
+                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+            </div>
             <div class="content">
+                <div class="rating"><i class="fas fa-star"></i> 4.8 (85)</div>
                 <h3>Pizza Margherita</h3>
-                <p>Massa de fermentação natural, molho de tomate pelati, manjericão fresco.</p>
-                <div class="price">R$ 55,00</div>
+                <p>Massa de fermentação natural, molho de tomate pelati italiano, mussarela de búfala e manjericão fresco.</p>
+                <div class="price-action">
+                    <div class="price">R$ 55,00</div>
+                </div>
             </div>
-        </div>
-        <div class="menu-item">
-            <div class="img-placeholder" style="background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);"></div>
+        </article>
+
+        <article class="menu-item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salada Fit">
+                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+            </div>
             <div class="content">
-                <h3>Salada Fit</h3>
-                <p>Folhas verdes, tomate cereja, frango grelhado e molho especial.</p>
-                <div class="price">R$ 28,50</div>
+                <div class="rating"><i class="fas fa-star"></i> 4.7 (50)</div>
+                <h3>Bowl Saudável</h3>
+                <p>Mix de folhas verdes orgânicas, tomate cereja, quinoa, frango grelhado e molho especial de mostarda e mel.</p>
+                <div class="price-action">
+                    <div class="price">R$ 28,50</div>
+                </div>
             </div>
-        </div>
-        <div class="menu-item">
-            <div class="img-placeholder" style="background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);"></div>
+        </article>
+
+        <article class="menu-item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80" alt="Sorvete Artesanal">
+                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+            </div>
             <div class="content">
-                <h3>Sorvete Artesanal</h3>
-                <p>Baunilha de Madagascar com calda de frutas vermelhas.</p>
-                <div class="price">R$ 18,90</div>
+                <div class="rating"><i class="fas fa-star"></i> 5.0 (200)</div>
+                <h3>Gelato Premium</h3>
+                <p>Sorvete artesanal de fava de baunilha de Madagascar acompanhado com calda de frutas vermelhas.</p>
+                <div class="price-action">
+                    <div class="price">R$ 18,90</div>
+                </div>
             </div>
-        </div>
+        </article>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Sabores Premium. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

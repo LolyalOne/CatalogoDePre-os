@@ -2,26 +2,227 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Loja Virtual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual Premium</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f9f9f9; }
-        .navbar { background: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-        .navbar h2 { margin: 0; color: #333; }
-        .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px; }
-        .product { background: #fff; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #eee; transition: box-shadow 0.2s; }
-        .product:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .img { height: 150px; background: #eee; margin-bottom: 15px; border-radius: 4px; }
-        .price { font-weight: bold; color: #27ae60; margin: 10px 0; }
-        button { background: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background: #f0f2f5; 
+            color: #333;
+        }
+        
+        .navbar { 
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar h2 { 
+            margin: 0; 
+            color: #111; 
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+        
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            background: #f0f2f5;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        
+        .cart:hover {
+            background: #e4e6e9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #111;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .products { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .product { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 16px; 
+            text-align: center; 
+            border: 1px solid rgba(0,0,0,0.04); 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product:hover { 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            transform: translateY(-5px);
+        }
+        
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }
+        
+        .product h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: #222;
+        }
+        
+        .price { 
+            font-weight: 800; 
+            color: #111; 
+            font-size: 1.4rem;
+            margin: auto 0 20px 0; 
+        }
+        
+        button { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: #fff; 
+            border: none; 
+            padding: 14px 20px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        button:hover { 
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .tag {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+        }
+
     </style>
 </head>
 <body>
-    <div class="navbar"><h2>Minha Loja</h2><div>Carrinho (0)</div></div>
-    <div class="products">
-        <div class="product"><div class="img"></div><h3>Produto A</h3><div class="price">R$ 199,90</div><button>Comprar</button></div>
-        <div class="product"><div class="img"></div><h3>Produto B</h3><div class="price">R$ 89,90</div><button>Comprar</button></div>
-        <div class="product"><div class="img"></div><h3>Produto C</h3><div class="price">R$ 249,90</div><button>Comprar</button></div>
-        <div class="product"><div class="img"></div><h3>Produto D</h3><div class="price">R$ 14,90</div><button>Comprar</button></div>
+    <div class="navbar">
+        <h2>Lumina Store</h2>
+        <div class="cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            Carrinho (0)
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Descubra Nossos Produtos</h1>
+            <p>Design moderno, qualidade excepcional e preços acessíveis.</p>
+        </div>
+        <div class="products">
+            <div class="product">
+                <span class="tag">Novo</span>
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto A">
+                <h3>Relógio Minimalista</h3>
+                <div class="price">R$ 199,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto B">
+                <h3>Fone de Ouvido Pro</h3>
+                <div class="price">R$ 289,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <span class="tag" style="background:#2ed573;">Oferta</span>
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto C">
+                <h3>Câmera Vintage</h3>
+                <div class="price">R$ 449,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto D">
+                <h3>Tênis Esportivo</h3>
+                <div class="price">R$ 314,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281501f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto E">
+                <h3>Óculos Escuros</h3>
+                <div class="price">R$ 129,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto F">
+                <h3>Perfume Premium</h3>
+                <div class="price">R$ 159,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <span class="tag" style="background:#ffa502;">Popular</span>
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto G">
+                <h3>Smartwatch Series X</h3>
+                <div class="price">R$ 599,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produto H">
+                <h3>Headset Gamer</h3>
+                <div class="price">R$ 214,90</div>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

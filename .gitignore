@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.lovable/
+.tanstack/
+bun.lock
+bun.lockb

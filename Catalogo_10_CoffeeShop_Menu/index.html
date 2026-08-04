@@ -2,36 +2,264 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cafeteria Elegante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Elegante | La Café Artesanal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Georgia', serif; margin: 0; background: #fdfbf7; color: #4a3f35; }
-        header { text-align: center; padding: 80px 20px 40px; }
-        h1 { font-size: 3rem; margin: 0; font-style: italic; }
-        .menu-list { max-width: 800px; margin: 0 auto; padding: 40px; }
-        .category { margin-bottom: 50px; }
-        .category h2 { border-bottom: 2px solid #e0d5c1; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 1.2rem; }
-        .item { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: baseline; }
-        .item-name { font-weight: bold; font-size: 1.1rem; }
-        .dots { flex: 1; border-bottom: 1px dotted #ccc; margin: 0 15px; }
-        .item-price { font-weight: bold; color: #8b5e34; }
-        .desc { font-size: 0.9rem; color: #7a6e60; margin-top: 5px; font-style: italic; }
+        :root {
+            --primary: #cba87c;
+            --text-light: #f5f0eb;
+            --text-dark: #2c241b;
+            --glass-bg: rgba(20, 15, 10, 0.75);
+            --glass-border: rgba(203, 168, 124, 0.3);
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0806;
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Fixed Background with Overlay */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            z-index: -2;
+        }
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,8,6,0.9) 0%, rgba(20,15,10,0.6) 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 0;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 235, 0.8);
+            margin-top: 10px;
+        }
+
+        .menu-wrapper {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .category {
+            margin-bottom: 60px;
+        }
+
+        .category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            margin-left: 20px;
+            opacity: 0.5;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .item {
+            position: relative;
+            padding: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid transparent;
+        }
+
+        .item:hover {
+            background: rgba(203, 168, 124, 0.05);
+            border-color: rgba(203, 168, 124, 0.2);
+            transform: translateX(10px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .dots {
+            flex: 1;
+            border-bottom: 1px dashed rgba(203, 168, 124, 0.4);
+            margin: 0 15px;
+            opacity: 0.5;
+        }
+
+        .item-price {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: rgba(245, 240, 235, 0.7);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Image placehoder for popular item if needed, but keeping it simple and elegant */
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .menu-wrapper { padding: 30px 20px; }
+            h1 { font-size: 2.5rem; }
+            .category-title { font-size: 1.8rem; }
+            .item-header { flex-direction: column; }
+            .dots { display: none; }
+            .item-price { margin-top: 5px; }
+            .item:hover { transform: translateY(-5px); }
+        }
     </style>
 </head>
 <body>
-    <header><h1>La Café Artesanal</h1></header>
-    <div class="menu-list">
-        <div class="category">
-            <h2>Cafés Quentes</h2>
-            <div class="item"><div class="item-name">Espresso Duplo</div><div class="dots"></div><div class="item-price">R$ 8,00</div></div>
-            <div class="desc">Grãos selecionados 100% arábica.</div><br>
-            <div class="item"><div class="item-name">Cappuccino Italiano</div><div class="dots"></div><div class="item-price">R$ 14,00</div></div>
-            <div class="desc">Espresso, leite vaporizado e crema.</div>
-        </div>
-        <div class="category">
-            <h2>Acompanhamentos</h2>
-            <div class="item"><div class="item-name">Croissant de Amêndoas</div><div class="dots"></div><div class="item-price">R$ 16,00</div></div>
-            <div class="desc">Massa folhada autêntica francesa.</div>
-        </div>
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1>La Café Artesanal</h1>
+            <div class="subtitle">Experiência & Tradição</div>
+        </header>
+
+        <main class="menu-wrapper">
+            <section class="category">
+                <h2 class="category-title">Cafés Quentes</h2>
+                <div class="menu-grid">
+                    <article class="item">
+                        <div class="item-header">
+                            <h3 class="item-name">Espresso Duplo</h3>
+                            <div class="dots"></div>
+                            <span class="item-price">R$ 8,00</span>
+                        </div>
+                        <p class="item-desc">Grãos selecionados 100% arábica com extração perfeita e crema aveludada.</p>
+                    </article>
+
+                    <article class="item">
+                        <div class="item-header">
+                            <h3 class="item-name">Cappuccino Italiano</h3>
+                            <div class="dots"></div>
+                            <span class="item-price">R$ 14,00</span>
+                        </div>
+                        <p class="item-desc">Uma dose de espresso equilibrada com leite vaporizado e espuma cremosa.</p>
+                    </article>
+
+                    <article class="item">
+                        <div class="item-header">
+                            <h3 class="item-name">Mocha de Chocolate Belga</h3>
+                            <div class="dots"></div>
+                            <span class="item-price">R$ 18,00</span>
+                        </div>
+                        <p class="item-desc">Espresso, chocolate belga derretido, leite vaporizado e chantilly fresco.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="category">
+                <h2 class="category-title">Acompanhamentos</h2>
+                <div class="menu-grid">
+                    <article class="item">
+                        <div class="item-header">
+                            <h3 class="item-name">Croissant de Amêndoas</h3>
+                            <div class="dots"></div>
+                            <span class="item-price">R$ 16,00</span>
+                        </div>
+                        <p class="item-desc">Massa folhada autêntica francesa, amanteigada, com recheio e lascas de amêndoas torradas.</p>
+                    </article>
+
+                    <article class="item">
+                        <div class="item-header">
+                            <h3 class="item-name">Cheesecake de Frutas Vermelhas</h3>
+                            <div class="dots"></div>
+                            <span class="item-price">R$ 22,00</span>
+                        </div>
+                        <p class="item-desc">Base crocante, creme de queijo suave e calda artesanal de frutas vermelhas.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>

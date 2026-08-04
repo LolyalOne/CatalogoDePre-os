@@ -137,6 +137,37 @@ header {
     bottom: 0; left: 0; right: 0;
     height: 50%;
     background: linear-gradient(to top, var(--card-bg), transparent);
+    z-index: 1;
+}
+
+.card-preview {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.card-preview iframe {
+    width: 400%;
+    height: 400%;
+    transform: scale(0.25);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.card-preview::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, var(--card-bg) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .tag {
