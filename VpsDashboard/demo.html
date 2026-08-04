@@ -145,10 +145,79 @@
         </div>
     </div>
     <script>
+        // Toast notification system
+        const toast = document.createElement('div');
+        toast.style.cssText = 'position:fixed; bottom:24px; right:24px; background:#10b981; color:#0a0f0d; padding:12px 24px; border-radius:8px; font-weight:600; font-family:"Inter",sans-serif; transform:translateY(100px); opacity:0; transition:all 0.3s; z-index:999; box-shadow:0 10px 25px rgba(16,185,129,0.3); display:flex; align-items:center; gap:10px;';
+        document.body.appendChild(toast);
+
+        let toastTimeout;
+        function showToast(message, icon = 'fa-check-circle') {
+            toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            toast.style.transform = 'translateY(0)';
+            toast.style.opacity = '1';
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.style.transform = 'translateY(100px)';
+                toast.style.opacity = '0';
+            }, 3000);
+        }
+
+        // Topbar actions
+        const topbarBtns = document.querySelectorAll('.topbar-actions .icon-btn');
+        topbarBtns[0].addEventListener('click', () => showToast('Nenhuma notificação nova no momento', 'fa-bell-slash'));
+        topbarBtns[1].addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => showToast('Tela cheia bloqueada pelo navegador', 'fa-exclamation-triangle'));
+                topbarBtns[1].innerHTML = '<i class="fas fa-compress"></i>';
+            } else {
+                document.exitFullscreen();
+                topbarBtns[1].innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        });
+        topbarBtns[2].addEventListener('click', () => {
+            const isDark = document.body.style.background === 'rgb(243, 244, 246)'; // Light mode check
+            if (!isDark) {
+                document.body.style.background = '#f3f4f6';
+                document.body.style.color = '#1f2937';
+                showToast('Tema claro ativado (Beta)', 'fa-sun');
+                topbarBtns[2].innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.body.style.background = '#0a0f0d';
+                document.body.style.color = '#e8f5e9';
+                showToast('Tema escuro ativado', 'fa-moon');
+                topbarBtns[2].innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+
+        // Table actions
+        const tableBtns = document.querySelectorAll('.table-actions button');
+        tableBtns[0].addEventListener('click', () => showToast('Painel de filtros avançados aberto (Demo)', 'fa-filter'));
+        tableBtns[1].addEventListener('click', () => showToast('Ordenando tabela...', 'fa-sort-amount-down'));
+        tableBtns[2].addEventListener('click', () => showToast('Iniciando download do arquivo dados.csv', 'fa-file-csv'));
+
+        // Row clicks
+        document.querySelectorAll('#tableBody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                const name = row.querySelector('.user-cell').innerText.replace(/[A-Z]{2}/, '').trim();
+                showToast(`Visualizando perfil de ${name}`, 'fa-user');
+            });
+        });
+
+        // Sidebar actions
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                showToast(`Navegando para ${this.innerText.trim()}`, 'fa-compass');
+            });
+        });
+
+        // Initialize Charts
         new Chart(document.getElementById('lineChart'),{type:'line',data:{labels:['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],datasets:[{label:'Processados',data:[12400,18200,15800,22100,19500,16800,21300],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.08)',fill:true,tension:0.4,borderWidth:2,pointRadius:4,pointBackgroundColor:'#10b981',pointBorderColor:'#0a0f0d',pointBorderWidth:2},{label:'Exportados',data:[4200,6100,5400,7800,6900,5200,7100],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.05)',fill:true,tension:0.4,borderWidth:2,pointRadius:4,pointBackgroundColor:'#3b82f6',pointBorderColor:'#0a0f0d',pointBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b7f73',font:{family:'Inter'}}}},scales:{x:{grid:{color:'rgba(16,185,129,0.05)'},ticks:{color:'#4a6b5a',font:{family:'Inter'}}},y:{grid:{color:'rgba(16,185,129,0.05)'},ticks:{color:'#4a6b5a',font:{family:'Inter'}}}}}});
         new Chart(document.getElementById('doughnutChart'),{type:'doughnut',data:{labels:['Sudeste','Nordeste','Sul','Centro-Oeste','Norte'],datasets:[{data:[45,22,18,10,5],backgroundColor:['#10b981','#3b82f6','#8b5cf6','#f59e0b','#ef4444'],borderColor:'#0a0f0d',borderWidth:3}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#6b7f73',padding:12,font:{family:'Inter',size:11}}}}}});
+        
+        // Search
         document.getElementById('searchInput').addEventListener('input',function(e){const q=e.target.value.toLowerCase();document.querySelectorAll('#tableBody tr').forEach(row=>{row.style.display=row.textContent.toLowerCase().includes(q)?'':'none';});});
-        document.querySelectorAll('.nav-item').forEach(item=>{item.addEventListener('click',function(){document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));this.classList.add('active');});});
     </script>
 </body>
 </html>
